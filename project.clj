@@ -6,7 +6,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/data.json "0.2.6"]
                  [clj-http "1.1.2"]
-                 [jansi-clj "0.1.0"]]
+                 [jansi-clj "0.1.0"]
+                 [environ "1.0.0"]]
   :main ^:skip-aot letha.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

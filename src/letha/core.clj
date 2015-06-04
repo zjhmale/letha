@@ -1,14 +1,17 @@
 (ns letha.core
   (:require [clj-http.client :as client]
             [clojure.data.json :as json]
-            [jansi-clj.core :refer :all])
+            [jansi-clj.core :refer :all]
+            [environ.core :refer [env]])
   (:use [clojure.string :only (join)])
   (:gen-class))
 
 (defn -main
   [& args]
   (let [raw (nth args 0)
-        response (client/get (str "http://fanyi.youdao.com/openapi.do?keyfrom=darfooofficialsite&key=1281351747&type=data&doctype=json&version=1.1&q=" raw))
+        keyfrom (env :youdao-keyfrom)
+        key (env :youdao-key)
+        response (client/get (format "http://fanyi.youdao.com/openapi.do?keyfrom=%s&key=%s&type=data&doctype=json&version=1.1&q=%s" keyfrom key raw))
         domain (blue (get-in response [:cookies "SESSION_FROM_COOKIE" :domain]))
         body (json/read-str (:body response))
         basic (get body "basic")
@@ -25,6 +28,8 @@
                                                         findraw (re-find regexraw key)]
                                                     (clojure.string/replace key (re-pattern findraw) (yellow findraw)))
                                                   (red (join "," (-> itm (get "value")))))) (get body "web")))]
+    (println keyfrom)
+    (println key)
     (println (format "%s -> %s %s %s ~ %s\n" raw translate usphonetic ukphonetic domain))
     (println (str explains "\n"))
     (println (str phrases))))
