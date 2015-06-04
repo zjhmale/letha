@@ -4,7 +4,7 @@ a lightweight command line directory
 
 ## Snapshot
 
-![cleantha](./snapshot.png)
+![cleantha](http://7b1evx.com1.z0.glb.clouddn.com/snapshot.png)
 
 ## Usage
 
