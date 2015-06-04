@@ -28,8 +28,6 @@
                                                         findraw (re-find regexraw key)]
                                                     (clojure.string/replace key (re-pattern findraw) (yellow findraw)))
                                                   (red (join "," (-> itm (get "value")))))) (get body "web")))]
-    (println keyfrom)
-    (println key)
     (println (format "%s -> %s %s %s ~ %s\n" raw translate usphonetic ukphonetic domain))
     (println (str explains "\n"))
     (println (str phrases))))

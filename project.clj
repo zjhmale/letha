@@ -8,6 +8,8 @@
                  [clj-http "1.1.2"]
                  [jansi-clj "0.1.0"]
                  [environ "1.0.0"]]
+  :plugins [[lein-bin "0.3.5"]]
+  :bin {:name "letha"}
   :main ^:skip-aot letha.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
